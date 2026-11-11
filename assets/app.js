@@ -33,7 +33,7 @@
     height = stage.clientHeight;
     ratio = Math.max(width / 3072, height / 2048);
     offsetX = (width - 3072 * ratio) * (width <= 640 ? .77 : .5);
-    offsetY = (height - 2048 * ratio) * .5;
+    offsetY = (height - 2048 * ratio) * .5 + (width <= 640 ? 150 : 0);
     distance = Math.max(1, track.offsetHeight - height);
     paint();
   }
@@ -45,10 +45,10 @@
     const perspective = t / (1 + 2.4 * (1 - t));
     const startX = width * (width <= 640 ? .34 : .44);
     const startY = height * .75;
-    const targetX = offsetX + 2235 * ratio;
-    const targetY = offsetY + 780 * ratio;
+    const targetX = offsetX + 2220 * ratio;
+    const targetY = offsetY + 750 * ratio;
     const initial = Math.min(width <= 640 ? width * .62 : width * .28, 400);
-    const final = 31 * ratio;
+    const final = 38 * ratio;
     // Keep the approach inside the left post before crossing the goal plane.
     const x = mix(startX, targetX, perspective);
     const y = mix(startY, targetY, perspective) - Math.sin(t * Math.PI) * height * .09;

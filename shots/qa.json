@@ -1,0 +1,95 @@
+[
+  {
+    "viewport": "desktop",
+    "route": "/portfolio/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/portfolio/identite/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/shop/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/shop/t-shirt-blanc/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "desktop",
+    "route": "/shop/vestiaire/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/portfolio/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/portfolio/identite/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/shop/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/shop/t-shirt-blanc/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "mobile",
+    "route": "/shop/vestiaire/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "tablet",
+    "route": "/portfolio/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "tablet",
+    "route": "/portfolio/identite/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "tablet",
+    "route": "/shop/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "tablet",
+    "route": "/shop/t-shirt-blanc/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "viewport": "tablet",
+    "route": "/shop/vestiaire/",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "reducedHeroHeight": 844
+  }
+]
