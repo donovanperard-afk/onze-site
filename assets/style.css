@@ -8,3 +8,15 @@
 @media(max-width:640px){:root{--gut:24px}.nav{height:88px;gap:15px}.wordmark{font-size:34px}.nav-links{gap:19px}.nav-links a{font-size:13px}.landscape,.goal-net{object-position:77% 50%}.hero-copy{top:148px}.hero-copy h1{font-size:clamp(42px,10.7vw,64px);line-height:1.04}.hero-copy p{font-size:15px;max-width:280px;margin:18px 0}.hero-links{gap:24px}.text-link{font-size:14px;gap:24px}.hero-baseline{bottom:26px;font-size:11px}.hero-baseline>span:last-child{display:none}.scene-end{bottom:130px;right:24px}.scene-end h2{font-size:42px}.home-links{padding:65px 0}.home-links h2{font-size:42px}.entry-grid{grid-template-columns:1fr;gap:20px}.entry{height:380px}.entry strong{font-size:42px}.page-intro{grid-template-columns:1fr;padding:50px 0 34px;gap:26px}.page-intro h1{font-size:60px}.page-intro p{font-size:16px;max-width:330px}.notice{font-size:12px;gap:15px;align-items:center}.notice span:last-child{text-align:right}.grid{grid-template-columns:1fr;gap:24px;padding:26px 0 65px}.project-label{padding:19px 20px}.project-label strong{font-size:22px}.project img{aspect-ratio:1/1.08}.footer{padding-top:48px}.footer-top{flex-direction:column;gap:25px}.footer-title{font-size:42px}.contact-link{font-size:18px}.footer-bottom{flex-wrap:wrap;align-items:center;gap:15px}.footer-bottom .wordmark{font-size:42px}.footer-bottom p{order:3;width:100%}.footer-bottom nav{gap:20px}.shop-feature{grid-template-columns:1fr;margin-top:26px}.locker-art{min-height:330px}.feature-copy{padding:30px}.feature-copy h2{font-size:42px}.detail-head{padding:24px 0 25px;font-size:12px}.detail-hero{grid-template-columns:1fr;gap:24px;padding-bottom:60px}.detail-info{position:static;padding-top:5px}.detail-info h1{font-size:52px}.detail-info dl{margin-top:30px}.contact-dialog{padding:32px}.contact-dialog h2{font-size:38px}.vestiaire-heading{padding-top:45px}.vestiaire-heading h1{font-size:56px}.vestiaire .locker-art{min-height:420px;padding:35px 12%}.next-project{padding:25px 0 55px}.next-project a{font-size:32px}}
 @media(max-width:640px){.hero-stage{background:#04050c}.landscape,.goal-net{top:150px}.hero-copy p{max-width:285px}.hero-copy{top:138px}}
 @media(prefers-reduced-motion:reduce){.hero-track{height:100svh}.hero-stage{position:relative}.hero-copy{animation:none}.ball,.ground-shadow{will-change:auto}.scene-end{display:none}.entry img,.project img,.project,.text-link,.variant,.nav-links a::after{transition:none}}
+
+/* Review pass: copy lives wholly above the neon geometry. */
+.hero-stage{background:#04050c}
+.landscape,.goal-net{top:140px}
+.hero-copy{top:130px;animation:none}
+.hero-copy h1{font-size:clamp(48px,4.7vw,72px);line-height:1.02}
+.hero-copy p{font-size:16px;margin:14px 0}
+.net-impact{position:absolute;left:0;top:0;max-width:none;z-index:4;opacity:0;pointer-events:none}
+@media(max-width:900px) and (min-width:641px){.hero-copy{top:125px}.hero-copy h1{font-size:56px}}
+@media(max-width:640px){.landscape,.goal-net{top:150px}.hero-copy{top:125px}.hero-copy h1{font-size:clamp(40px,10.7vw,64px)}.hero-copy p{font-size:15px}}
+
+.net-contact{position:absolute;left:0;top:0;max-width:none;z-index:7;opacity:0;pointer-events:none}

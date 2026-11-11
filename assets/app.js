@@ -20,7 +20,8 @@
   const copy = document.querySelector('.hero-copy');
   const net = document.querySelector('.goal-net');
   const shadow = document.querySelector('.ground-shadow');
-  const ending = document.querySelector('.scene-end');
+  const impact = document.querySelector('.net-impact');
+  const contact = document.querySelector('.net-contact');
   const scrollLabel = document.querySelector('.scroll-label');
   const progressLine = document.querySelector('.scroll-line i');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -33,7 +34,7 @@
     height = stage.clientHeight;
     ratio = Math.max(width / 3072, height / 2048);
     offsetX = (width - 3072 * ratio) * (width <= 640 ? .77 : .5);
-    offsetY = (height - 2048 * ratio) * .5 + (width <= 640 ? 150 : 0);
+    offsetY = (height - 2048 * ratio) * .5 + (width <= 640 ? 150 : 140);
     distance = Math.max(1, track.offsetHeight - height);
     paint();
   }
@@ -45,10 +46,11 @@
     const perspective = t / (1 + 2.4 * (1 - t));
     const startX = width * (width <= 640 ? .34 : .44);
     const startY = height * .75;
-    const targetX = offsetX + 2220 * ratio;
-    const targetY = offsetY + 750 * ratio;
+    const targetX = offsetX + 2199 * ratio;
+    const targetY = offsetY + 733 * ratio;
     const initial = Math.min(width <= 640 ? width * .62 : width * .28, 400);
-    const final = 38 * ratio;
+    // 0.09 × front post height (1030-706), compensate transparent sprite padding.
+    const final = ((1030 - 706) * .09 / (759 / 900)) * ratio;
     // Keep the approach inside the left post before crossing the goal plane.
     const x = mix(startX, targetX, perspective);
     const y = mix(startY, targetY, perspective) - Math.sin(t * Math.PI) * height * .09;
@@ -58,13 +60,17 @@
     ball.style.opacity = '1';
     shadow.style.transform = `translate3d(${x - 140}px,${mix(startY + initial * .42,height * .62,perspective) - 20}px,0) scale(${size / initial},${mix(1,.2,t)})`;
     shadow.style.opacity = String((1-t)*.8);
-    copy.style.opacity = String(1 - clamp(progress / .38));
-    copy.style.pointerEvents = progress > .36 ? 'none' : '';
-    copy.inert = progress > .36;
-    const endOpacity = reduce.matches ? 0 : clamp((progress - .78) / .15);
-    ending.style.opacity = String(endOpacity);
-    ending.inert = endOpacity < .1;
-    net.style.opacity = progress >= .88 ? '1' : '0';
+    // A single headline and the same two links remain, no overlapping end panel.
+    copy.style.opacity = '1';
+    copy.inert = false;
+    const hit = clamp((progress - .88) / .04);
+    impact.style.width = impact.style.height = `${128 * ratio}px`;
+    impact.style.transform = `translate3d(${targetX - 64 * ratio}px,${targetY - 64 * ratio}px,0)`;
+    impact.style.opacity = String(hit);
+    net.style.opacity = '0';
+    contact.style.width = contact.style.height = impact.style.width;
+    contact.style.transform = impact.style.transform;
+    contact.style.opacity = String(hit);
     progressLine.style.transform = `scaleY(${mix(1,2.8,progress)})`;
     scrollLabel.textContent = progress >= .93 ? 'À vous de jouer' : reduce.matches ? 'Studio Onze' : 'Défiler pour jouer';
   }
