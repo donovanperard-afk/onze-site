@@ -48,9 +48,9 @@
     const initial = mobile ? width * .7 : Math.min(400, width * .4);
     const startX = width * (mobile ? .4 : .20);
     const startY = mobile ? height - initial * .4 : height * .85;
-    const targetX = offsetX + 2207 * ratio;
-    const targetY = offsetY + 741 * ratio;
-    const final = ((1030 - 706) * .09) * ratio;
+    const targetX = offsetX + 2192 * ratio;
+    const targetY = offsetY + 768 * ratio;
+    const final = ((1030 - 706) * .22) * ratio;
     // single parabola: peak at e=.8, slight drop into the corner
     const B = (startY - targetY) / .6, A = -1.6 * B;
     const x = mix(startX, targetX, e);
