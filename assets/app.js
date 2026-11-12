@@ -1,5 +1,6 @@
 (() => {
   'use strict';
+  const base = document.currentScript?.src;
   const dialog = document.querySelector('.contact-dialog');
   document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
   dialog?.querySelector('[data-close]').addEventListener('click', () => dialog.close());
@@ -44,20 +45,23 @@
     // Perspective scale decreases quickly as the ball travels away from the camera.
     const t = clamp(progress / .92);
     const perspective = t / (1 + 2.4 * (1 - t));
-    const startX = width * (width <= 640 ? .34 : .44);
-    const startY = height * .75;
+    const startX = width * (width <= 640 ? .25 : .20);
+    const startY = height * .85;
     const targetX = offsetX + 2199 * ratio;
     const targetY = offsetY + 733 * ratio;
-    const initial = Math.min(width <= 640 ? width * .62 : width * .28, 400);
+    const initial = width <= 640 ? width * .7 : Math.min(400, width * .4);
     // 0.09 × front post height (1030-706), compensate transparent sprite padding.
-    const final = ((1030 - 706) * .09 / (759 / 900)) * ratio;
+    const final = ((1030 - 706) * .09) * ratio;
     // Keep the approach inside the left post before crossing the goal plane.
     const x = mix(startX, targetX, perspective);
     const y = mix(startY, targetY, perspective) - Math.sin(t * Math.PI) * height * .09;
     const size = mix(initial, final, perspective);
-    const rotation = -14 + t * 115;
-    ball.style.transform = `translate3d(${x - 210}px,${y - 210}px,0) rotate(${rotation}deg) scale(${size / 420})`;
-    ball.style.opacity = '1';
+    window.dispatchEvent(new CustomEvent('ball:update', {detail: {x, y, size, t, progress}}));
+    if (document.documentElement.dataset.ball3d) ball.style.opacity = '0';
+    else {
+      ball.style.transform = `translate3d(${x - 210}px,${y - 210}px,0) scale(${size * (900 / 759) / 420})`;
+      ball.style.opacity = '1';
+    }
     shadow.style.transform = `translate3d(${x - 140}px,${mix(startY + initial * .42,height * .62,perspective) - 20}px,0) scale(${size / initial},${mix(1,.2,t)})`;
     shadow.style.opacity = String((1-t)*.8);
     // A single headline and the same two links remain, no overlapping end panel.
@@ -83,5 +87,7 @@
   window.addEventListener('resize', measure, {passive:true});
   window.addEventListener('pageshow', measure);
   reduce.addEventListener('change', measure);
+  window.addEventListener('ball3dready', measure);
   measure();
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js', base).href; document.head.appendChild(l); }
 })();
