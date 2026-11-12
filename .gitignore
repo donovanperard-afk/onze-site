@@ -1,0 +1,3 @@
+scripts/*.blend
+scripts/*.log
+__pycache__/
