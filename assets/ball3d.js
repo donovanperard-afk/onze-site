@@ -14,7 +14,8 @@ function boot() {
   window.__AXV = AXV;
   const AX = new THREE.Vector3(), tmp = new THREE.Vector3();
   const qs = new THREE.Quaternion(), qbase = new THREE.Quaternion(), qr = new THREE.Quaternion();
-  const TURNS = 2.6, ROLL = 2.2;
+  const FULL_TURNS = 4, TAU = Math.PI * 2, TILT = 8 * Math.PI / 180;
+  const UP = new THREE.Vector3(0, 1, 0), DOWN = new THREE.Vector3(0, -1, 0), XAX = new THREE.Vector3(1, 0, 0);
   // spin is a pure function of scroll t: slight slowdown near the end, same value up or down
   const phase = t => { t = Math.min(1, Math.max(0, t)); return (t - .18 * t * t) / .82; };
   function size() {
@@ -24,20 +25,19 @@ function boot() {
     camera.left = 0; camera.right = w; camera.top = h; camera.bottom = 0; camera.updateProjectionMatrix();
   }
   function pose() {
-    const p = phase(last.t) * Math.PI * 2;
-    camera.updateMatrixWorld();
-    AX.copy(AXV).transformDirection(camera.matrixWorld);
-    qbase.setFromUnitVectors(HOLE, AX);
-    qr.setFromAxisAngle(AX, ROLL);
-    qs.setFromAxisAngle(AX, p * TURNS);
-    ball.quaternion.copy(qs).multiply(qr).multiply(qbase);
-    tmp.copy(HOLE).applyQuaternion(ball.quaternion).transformDirection(camera.matrixWorldInverse);
+    const p = phase(last.t) * FULL_TURNS * TAU; window.__spinAngle = p;
+    // pure spin about the ball's own vertical axis; hole on the bottom pole, ball inclined slightly away from camera
+    qbase.setFromUnitVectors(HOLE, DOWN);
+    qs.setFromAxisAngle(UP, p);
+    qr.setFromAxisAngle(XAX, TILT);
+    ball.quaternion.copy(qr).multiply(qs).multiply(qbase);
+    tmp.copy(HOLE).applyQuaternion(ball.quaternion);
     window.__holeZ = tmp.z; // < 0 means the opening faces away from the viewer
     ball.position.set(last.x, h - last.y, 0);
     ball.scale.setScalar(last.size);
     const g = Math.min(1, Math.max(0, (last.t - .55) / .4)); // cool neon rim grows toward the goal
-    rim.intensity = 6 * g; rim2.intensity = 0;
-    scene.environmentIntensity = 1.3 + .5 * g;
+    rim.intensity = 7 * g; rim2.intensity = 5 * g * g; rim2.position.set(last.gx || w * .73, h - (last.gy || h * .48), 260);
+    scene.environmentIntensity = .85 + .6 * g;
   }
   function draw() {
     queued = false;
@@ -68,11 +68,11 @@ function boot() {
     const pm = new THREE.PMREMGenerator(renderer);
     scene.environment = pm.fromScene(envScene, 0).texture;
     scene.environmentIntensity = 1.3;
-    const key = new THREE.DirectionalLight(0xffffff, 3);
+    const key = new THREE.DirectionalLight(0xe8f2ff, 4.2);
     key.position.set(-.47, .574, .671);
     scene.add(key);
     rim = new THREE.DirectionalLight(0xd8ecff, 0); rim.position.set(.9, -.2, -.5); scene.add(rim);
-    rim2 = new THREE.PointLight(0xe6f4ff, 0, 0, 0); scene.add(rim2);
+    rim2 = new THREE.PointLight(0x9fe8ff, 0, 0, 0); scene.add(rim2);
     const gltf = await new GLTFLoader().loadAsync(new URL('./ball.glb', import.meta.url).href);
     const obj = gltf.scene;
     const aniso = Math.min(renderer.capabilities.getMaxAnisotropy(), 16);
@@ -95,7 +95,7 @@ function boot() {
     obj.position.sub(c).multiplyScalar(k);
     obj.scale.multiplyScalar(k);
     ball = new THREE.Group(); ball.add(obj);
-    scene.add(ball);
+    scene.add(ball); window.__ballObj = ball;
     stage.insertBefore(canvas, document.querySelector('.ground-shadow'));
     size();
     addEventListener('resize', () => { size(); request(); }, { passive: true });
@@ -108,6 +108,7 @@ function boot() {
     canvas.style.opacity = '1';
     window.__ball3d = true;
     document.documentElement.dataset.ball3d = '1';
+    document.documentElement.dataset.ball3dState = 'ready';
     dispatchEvent(new Event('ball3dready'));
   }
   addEventListener('ball:update', e => { last = e.detail; if (ball) request(); });

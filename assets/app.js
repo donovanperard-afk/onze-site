@@ -44,19 +44,22 @@
     const progress = reduce.matches ? 0 : clamp(-track.getBoundingClientRect().top / distance);
     const mobile = width <= 640;
     const t = clamp(progress / .92);
-    const e = 1 - Math.pow(1 - t, 1.6); // ease-out: fast kick, decelerating with distance
-    const initial = mobile ? width * .7 : Math.min(400, width * .4);
-    const startX = width * (mobile ? .4 : .20);
-    const startY = mobile ? height - initial * .4 : height * .85;
-    const targetX = offsetX + 2192 * ratio;
-    const targetY = offsetY + 768 * ratio;
+    const e = 1 - Math.pow(1 - t, 1.25); // ease-out: fast kick, decelerating with distance
+    const initial = mobile ? width * .7 : height * .4;
+    const startX = mobile ? width * .4 : initial * .2;
+    const startY = mobile ? height - initial * .4 : height - initial * .25;
+    const targetX = offsetX + 2243 * ratio;
+    const targetY = offsetY + 698 * ratio;
     const final = ((1030 - 706) * .22) * ratio;
-    // single parabola: peak at e=.8, slight drop into the corner
-    const B = (startY - targetY) / .6, A = -1.6 * B;
-    const x = mix(startX, targetX, e);
-    const y = startY + A * e + B * e * e;
+    // low sweep along the grass, then a gentle curve up into the front-right goal (cubic bezier)
+    const dx = targetX - startX, dy = startY - targetY;
+    const p1x = startX + dx * .42, p1y = startY + height * .03;
+    const p2x = targetX - dx * .2, p2y = targetY + dy * .5;
+    const u = 1 - e, k0 = u * u * u, k1 = 3 * u * u * e, k2 = 3 * u * e * e, k3 = e * e * e;
+    const x = k0 * startX + k1 * p1x + k2 * p2x + k3 * targetX;
+    const y = k0 * startY + k1 * p1y + k2 * p2y + k3 * targetY;
     const size = mix(initial, final, e);
-    window.dispatchEvent(new CustomEvent('ball:update', {detail: {x, y, size, t, progress}}));
+    window.dispatchEvent(new CustomEvent('ball:update', {detail: {x, y, size, t, progress, gx: targetX, gy: targetY}}));
     if (document.documentElement.dataset.ball3d) ball.style.opacity = '0';
     else {
       ball.style.transform = `translate3d(${x - 210}px,${y - 210}px,0) scale(${size * (900 / 759) / 420})`;
@@ -89,5 +92,5 @@
   reduce.addEventListener('change', measure);
   window.addEventListener('ball3dready', measure);
   measure();
-  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js', base).href; document.head.appendChild(l); }
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r7', base).href; document.head.appendChild(l); }
 })();
