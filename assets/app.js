@@ -1,6 +1,9 @@
 (() => {
   'use strict';
   const base = document.currentScript?.src;
+  const navEl = document.querySelector('.nav');
+  const navState = () => navEl && navEl.classList.toggle('is-scrolled', scrollY > 10);
+  addEventListener('scroll', navState, {passive:true}); navState();
   const dialog = document.querySelector('.contact-dialog');
   document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
   dialog?.querySelector('[data-close]').addEventListener('click', () => dialog.close());
@@ -100,5 +103,5 @@
   reduce.addEventListener('change', measure);
   window.addEventListener('ball3dready', measure);
   measure();
-  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r8', base).href; document.head.appendChild(l); }
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r9', base).href; document.head.appendChild(l); }
 })();
