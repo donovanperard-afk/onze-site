@@ -27,14 +27,14 @@ async function init() {
   renderer = new THREE.WebGLRenderer({canvas, alpha: true, antialias: true, powerPreference: 'low-power'});
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.25;
   scene = new THREE.Scene();
   camera = new THREE.OrthographicCamera(0, 1, 0, 1, -2000, 2000);
   // y down in pixel space: flip so the ball isn't mirrored
   camera.up.set(0, -1, 0);
   const key = new THREE.DirectionalLight(0xcfe2ff, 3.2); key.position.set(-1, -1.2, 1.4); scene.add(key);
-  scene.add(new THREE.HemisphereLight(0x8ea4c8, 0x1a2230, 1.1));
-  const rim = new THREE.DirectionalLight(0x9fb8ff, .8); rim.position.set(1, .6, -.5); scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xb8cdee, 0x3a4658, 2.2));
+  const rim = new THREE.DirectionalLight(0xeaf6ff, 3.5); rim.position.set(1.2, .4, -.8); scene.add(rim);
   const gltf = await new GLTFLoader().loadAsync(new URL('./ball.glb', import.meta.url).href);
   const obj = gltf.scene;
   const box = new THREE.Box3().setFromObject(obj);
