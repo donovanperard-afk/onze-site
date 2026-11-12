@@ -103,5 +103,5 @@
   reduce.addEventListener('change', measure);
   window.addEventListener('ball3dready', measure);
   measure();
-  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r9', base).href; document.head.appendChild(l); }
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r10', base).href; document.head.appendChild(l); }
 })();
