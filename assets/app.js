@@ -39,9 +39,17 @@
     distance = Math.max(1, track.offsetHeight - height);
     paint();
   }
-  function paint() {
+  let cur = null, last = 0;
+  const K = -Math.log(.925) * 60; // equals .075 per frame at 60fps, frame-rate independent
+  function paint(now) {
     queued = false;
-    const progress = reduce.matches ? 0 : clamp(-track.getBoundingClientRect().top / distance);
+    const target = reduce.matches ? 0 : clamp(-track.getBoundingClientRect().top / distance);
+    const dt = Math.min(.1, Math.max(0, ((now || performance.now()) - last) / 1000));
+    last = now || performance.now();
+    if (cur === null || reduce.matches) cur = target;
+    else cur += (target - cur) * (1 - Math.exp(-K * dt));
+    if (Math.abs(target - cur) < .0004) cur = target; else if (!queued && !document.hidden) { queued = true; requestAnimationFrame(paint); }
+    const progress = cur;
     const mobile = width <= 640;
     const t = clamp(progress / .92);
     const e = 1 - Math.pow(1 - t, 1.25); // ease-out: fast kick, decelerating with distance
