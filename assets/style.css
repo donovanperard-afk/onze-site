@@ -26,3 +26,4 @@
 .nav-contact{color:inherit}
 body:not(.home){padding-top:100px}
 @media(max-width:640px){body:not(.home){padding-top:88px}}
+.ball3d{filter:blur(.35px) saturate(.92)}

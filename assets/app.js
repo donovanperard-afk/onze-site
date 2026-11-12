@@ -56,8 +56,8 @@
     const initial = mobile ? width * .7 : height * .4;
     const startX = mobile ? width * .4 : initial * .2;
     const startY = mobile ? height - initial * .4 : height - initial * .25;
-    const targetX = offsetX + 2243 * ratio;
-    const targetY = offsetY + 698 * ratio;
+    const targetX = offsetX + 2262 * ratio;
+    const targetY = offsetY + 768 * ratio;
     const final = ((1030 - 706) * .22) * ratio;
     // low sweep along the grass, then a gentle curve up into the front-right goal (cubic bezier)
     const dx = targetX - startX, dy = startY - targetY;
@@ -82,7 +82,7 @@
     impact.style.width = impact.style.height = `${128 * ratio}px`;
     impact.style.transform = `translate3d(${targetX - 64 * ratio}px,${targetY - 64 * ratio}px,0)`;
     impact.style.opacity = '0';
-    net.style.opacity = '0';
+    net.style.opacity = String(clamp((progress - .6) / .2)); // plate frame+net drawn over the 3D ball: it ends inside the goal
     contact.style.width = contact.style.height = impact.style.width;
     contact.style.transform = impact.style.transform;
     contact.style.opacity = String(hit * .15);
@@ -100,5 +100,5 @@
   reduce.addEventListener('change', measure);
   window.addEventListener('ball3dready', measure);
   measure();
-  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r7', base).href; document.head.appendChild(l); }
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r8', base).href; document.head.appendChild(l); }
 })();

@@ -7,7 +7,7 @@ function boot() {
   canvas.className = 'ball3d';
   canvas.setAttribute('aria-hidden', 'true');
   canvas.style.opacity = '0';
-  let rim, rim2, renderer, scene, camera, ball, live = false, queued = false, w = 0, h = 0;
+  let key, amb, rim, rim2, renderer, scene, camera, ball, live = false, queued = false, w = 0, h = 0;
   let last = { x: 0, y: 0, size: 100, t: 0 };
   const HOLE = new THREE.Vector3(-.112, -.994, .016).normalize(); // opening, model space (glTF Y-up)
   const AXV = new THREE.Vector3(.5, .32, -.8).normalize(); // spin axis in camera space, pointing away from viewer
@@ -35,9 +35,12 @@ function boot() {
     window.__holeZ = tmp.z; // < 0 means the opening faces away from the viewer
     ball.position.set(last.x, h - last.y, 0);
     ball.scale.setScalar(last.size);
-    const g = Math.min(1, Math.max(0, (last.t - .55) / .4)); // cool neon rim grows toward the goal
-    rim.intensity = 7 * g; rim2.intensity = 5 * g * g; rim2.position.set(last.gx || w * .73, h - (last.gy || h * .48), 260);
-    scene.environmentIntensity = .85 + .6 * g;
+    const g = Math.min(1, Math.max(0, (last.t - .45) / .5)); // goal glow ramps in on approach
+    key.position.set(w * .1, h * 1.1, 600); // fixed in the world: ball moves/spins through it
+    const gx = last.gx || w * .73, gy = h - (last.gy || h * .48);
+    rim2.position.set(gx, gy, 170); rim2.intensity = 2.2e5 * (.25 + .75 * g);
+    rim.intensity = 2.5 * g * g;
+    scene.environmentIntensity = .35 + .25 * g;
   }
   function draw() {
     queued = false;
@@ -62,17 +65,20 @@ function boot() {
     camera = new THREE.OrthographicCamera(0, 1, 0, 1, -2000, 2000);
     // y up, positions flipped from page pixels in pose()
     // light set tuned against the Blender render of the same blend
-    const W = new THREE.Color().setRGB(.55, .62, .75, THREE.LinearSRGBColorSpace);
+    // night plate sampled from terrain.webp: sky ~(7,14,27), grass ~(10,16,6), goal glow up to ~(90,113,141)
+    const W = new THREE.Color().setRGB(.012, .028, .075, THREE.LinearSRGBColorSpace);
     const envScene = new THREE.Scene();
     envScene.add(new THREE.Mesh(new THREE.SphereGeometry(10, 32, 16), new THREE.MeshBasicMaterial({ color: W, side: THREE.BackSide })));
     const pm = new THREE.PMREMGenerator(renderer);
     scene.environment = pm.fromScene(envScene, 0).texture;
-    scene.environmentIntensity = 1.3;
-    const key = new THREE.DirectionalLight(0xe8f2ff, 4.2);
-    key.position.set(-.47, .574, .671);
-    scene.add(key);
-    rim = new THREE.DirectionalLight(0xd8ecff, 0); rim.position.set(.9, -.2, -.5); scene.add(rim);
-    rim2 = new THREE.PointLight(0x9fe8ff, 0, 0, 0); scene.add(rim2);
+    scene.environmentIntensity = .35;
+    // sky + dark green grass bounce
+    amb = new THREE.HemisphereLight(0x233b78, 0x0b1c07, 1.1); scene.add(amb);
+    // fixed world lights (page px space): cold key far upper-left, moonlight style, no falloff
+    key = new THREE.PointLight(0x9fc0ff, 5.2, 0, 0); scene.add(key);
+    // neon goal glow: fixed point at the goal, inverse square so spec/rim grow with proximity
+    rim = new THREE.DirectionalLight(0xbfe6ff, 0); rim.position.set(.9, -.2, -.5); scene.add(rim);
+    rim2 = new THREE.PointLight(0xa8ecff, 0, 0, 2); scene.add(rim2);
     const gltf = await new GLTFLoader().loadAsync(new URL('./ball.glb', import.meta.url).href);
     const obj = gltf.scene;
     const aniso = Math.min(renderer.capabilities.getMaxAnisotropy(), 16);
