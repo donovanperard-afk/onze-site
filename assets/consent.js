@@ -27,7 +27,6 @@
     box.innerHTML = '<p>Ce site ne dépose aucun cookie de suivi sans votre accord. Accepter permet de mesurer l’audience de façon anonyme. <a href="' + ROOT + 'confidentialite/">En savoir plus</a></p><div class="consent-actions"><button type="button" data-choice="no">Refuser</button><button type="button" data-choice="yes">Accepter</button></div>';
     box.querySelectorAll('[data-choice]').forEach(b => b.addEventListener('click', () => choose(b.dataset.choice === 'yes')));
     document.body.appendChild(box);
-    box.querySelector('[data-choice="no"]').focus({ preventScroll: true });
   }
   document.addEventListener('click', e => { if (e.target.closest('[data-cookie-prefs]')) { close(); open(); } });
   const saved = read();
