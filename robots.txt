@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://donovanperard-afk.github.io/onze-site/sitemap.xml
