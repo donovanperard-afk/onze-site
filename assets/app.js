@@ -85,7 +85,7 @@
     impact.style.width = impact.style.height = `${128 * ratio}px`;
     impact.style.transform = `translate3d(${targetX - 64 * ratio}px,${targetY - 64 * ratio}px,0)`;
     impact.style.opacity = '0';
-    net.style.opacity = String(clamp((progress - .6) / .2)); // plate frame+net drawn over the 3D ball: it ends inside the goal
+    net.style.opacity = String(clamp((progress - .895) / .025)); // r11: ball stays IN FRONT of the posts during approach; frame occludes only once the ball is inside the opening
     contact.style.width = contact.style.height = impact.style.width;
     contact.style.transform = impact.style.transform;
     contact.style.opacity = String(hit * .15);
@@ -103,5 +103,5 @@
   reduce.addEventListener('change', measure);
   window.addEventListener('ball3dready', measure);
   measure();
-  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r10', base).href; document.head.appendChild(l); }
+  if (base) { const l = document.createElement('script'); l.type = 'module'; l.src = new URL('ball3d.js?v=r11', base).href; document.head.appendChild(l); }
 })();
