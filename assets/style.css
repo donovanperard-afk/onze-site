@@ -64,3 +64,4 @@ body{color:var(--paper)}
 @media(hover:hover) and (pointer:fine){.variant:hover{background:rgba(244,245,242,.16)}.variant[aria-pressed=true]:hover{background:var(--paper)}}
 .footer{background-color:#05060C}.footer-bottom{border-top-color:rgba(244,245,242,.42)}
 button.text-link{background:transparent;border-width:0 0 1px;border-style:solid;padding:0}
+.home-links{color:var(--paper)}
