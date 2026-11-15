@@ -52,3 +52,12 @@ body:not(.home){padding-top:100px}
 .consent-actions{gap:16px}
 .consent-actions button{box-sizing:border-box;min-width:120px;min-height:48px;padding:12px 28px;background:transparent;color:var(--paper);border:2px solid var(--paper);font-size:14px;font-weight:600;line-height:1.2}
 @media(max-width:640px){.consent{padding:20px;gap:18px}.consent-actions button{padding:12px 20px}}
+/* r13 solid page background #05060C */
+body:not(.home),.home-links{--paper:#05060C;--ink:#f4f5f2;--muted:#a3aaa5;--line:#2b303b;background:#05060C;color:var(--ink)}
+.home,.home-links{background:#05060C}
+.home .hero-stage{background:#04050c}
+.footer,.consent,.contact-dialog,.entry,.shop-feature{--paper:#f4f5f2;--ink:#18211b;--muted:#5c655e;--line:#c9cdc3}
+.footer{background:#05060C;color:#f4f5f2}
+.home .home-links{color:#f4f5f2}
+.shop-feature{color:#18211b}
+.detail-image{color:#18211b}
