@@ -52,3 +52,16 @@ body:not(.home){padding-top:100px}
 .consent-actions{gap:16px}
 .consent-actions button{box-sizing:border-box;min-width:120px;min-height:48px;padding:12px 28px;background:transparent;color:var(--paper);border:2px solid var(--paper);font-size:14px;font-weight:600;line-height:1.2}
 @media(max-width:640px){.consent{padding:20px;gap:18px}.consent-actions button{padding:12px 20px}}
+/* r13 solid page background #05060C */
+body,.home,.home-links,.footer{background-color:#05060C}
+
+/* r13b: readable text on #05060C. light cards keep dark text */
+:root{--muted:rgba(244,245,242,.74);--line:rgba(244,245,242,.42)}
+.project,.shop-feature,.contact-dialog,.detail-image,.entry:last-child{--muted:#5c655e;--line:#c9cdc3;color:var(--ink)}
+body{color:var(--paper)}
+.skip{color:var(--ink)}
+.variant[aria-pressed=true],.buy-state{background:var(--paper);color:#05060C;border-color:var(--paper)}
+@media(hover:hover) and (pointer:fine){.variant:hover{background:rgba(244,245,242,.16)}.variant[aria-pressed=true]:hover{background:var(--paper)}}
+.footer{background-color:#05060C}.footer-bottom{border-top-color:rgba(244,245,242,.42)}
+button.text-link{background:transparent;border-width:0 0 1px;border-style:solid;padding:0}
+.home-links{color:var(--paper)}
