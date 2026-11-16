@@ -1,0 +1,198 @@
+{
+  "files": {
+    "room": "room.glb",
+    "live": "live.glb"
+  },
+  "camera": {
+    "position": [
+      -4.440892098500626e-16,
+      1.9770570993423462,
+      9.399999618530273
+    ],
+    "quaternion": [
+      -0.03154801204800606,
+      0.0,
+      0.0,
+      0.9995023012161255
+    ],
+    "fovVerticalDegrees": 26.499606017221424,
+    "near": 0.015,
+    "far": 80
+  },
+  "room": {
+    "atlases": {
+      "WALLS": {
+        "map": "WALLS.webp",
+        "channel": 1
+      },
+      "FLOOR": {
+        "map": "FLOOR.webp",
+        "channel": 1
+      },
+      "BENCH_RAIL": {
+        "map": "BENCH_RAIL.webp",
+        "channel": 1
+      },
+      "SHOES_BALLS": {
+        "map": "SHOES_BALLS.webp",
+        "channel": 1
+      },
+      "WALL_DETAILS": {
+        "map": "WALL_DETAILS.webp",
+        "channel": 1
+      }
+    }
+  },
+  "pairs": [
+    {
+      "name": "pair-1",
+      "hook": [
+        -3.037152051925659,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 01",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-blanc/?v=r16",
+      "teeSource": "Object_2",
+      "hangerSource": "Blank tee 3 Object_5.003"
+    },
+    {
+      "name": "pair-2",
+      "hook": [
+        -1.8378127813339233,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 02",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-noir/?v=r16",
+      "teeSource": "Blank tee 2 Object_2",
+      "hangerSource": "Blank tee 3 Object_5.004"
+    },
+    {
+      "name": "pair-3",
+      "hook": [
+        -0.578105628490448,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 03",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-blanc/?v=r16",
+      "teeSource": "Blank tee 3 Object_2",
+      "hangerSource": "Blank tee 3 Object_5.001"
+    },
+    {
+      "name": "pair-4",
+      "hook": [
+        0.5882040858268738,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 04",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-noir/?v=r16",
+      "teeSource": "Blank tee 4 Object_2",
+      "hangerSource": "Blank tee 3 Object_5.006"
+    },
+    {
+      "name": "pair-5",
+      "hook": [
+        1.7427916526794434,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 05",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-blanc/?v=r16",
+      "teeSource": "Blank tee 5 Object_2",
+      "hangerSource": "Blank tee 3 Object_5.005"
+    },
+    {
+      "name": "pair-6",
+      "hook": [
+        2.92763614654541,
+        2.397800922393799,
+        -0.23754176497459412
+      ],
+      "clear": 0.5,
+      "title": "T-shirt Onze 06",
+      "price": "Prix \u00e0 d\u00e9finir",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "href": "/onze-site/shop/t-shirt-noir/?v=r16",
+      "teeSource": "Blank tee 6 Object_2",
+      "hangerSource": "Blank tee 3 Object_5.002"
+    }
+  ],
+  "lights": {
+    "key": {
+      "position": [
+        -3,
+        4,
+        3
+      ],
+      "color": 14148863,
+      "intensity": 3.1
+    },
+    "rim": {
+      "position": [
+        0.7,
+        2.5,
+        -2.8
+      ],
+      "color": 16755050,
+      "intensity": 2
+    },
+    "env": 0.3
+  },
+  "glide": {
+    "dolly": 1.5,
+    "range": 1.65
+  },
+  "cotton": {
+    "map": "cotton-diff.webp",
+    "normalMap": "cotton-normal.webp",
+    "roughnessMap": "cotton-rough.webp"
+  }
+}
