@@ -1,0 +1,419 @@
+{
+  "version": 2,
+  "complete": true,
+  "scope": "24 logical material images; lighting parent-owned",
+  "originalDimensionsPreserved": true,
+  "images": {
+    "floor_Diffuse.jpg": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "floor_Diffuse-jpg.jpg",
+      "sourceSha256": "8662d6f8f1c40277a507fa259cd79392346e598de68add790b4102170092e34d",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/floor_Diffuse-jpg-q85.webp",
+      "encoding": "WebP85",
+      "bytes": 438912,
+      "sha256": "88027adf86f7ed2391ad3633bea03b83117912b4bbe99d350f04fbe9ec714faf",
+      "psnr": 38.94105465340181
+    },
+    "floor_nor_gl.jpg": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "linear",
+      "sourceRawFile": "floor_nor_gl-jpg.jpg",
+      "sourceSha256": "7fef61132d948d0e6476824289a21f8aa76a7930e2647ece0a0279d6972550f3",
+      "roles": [
+        "normalMap"
+      ],
+      "file": "textures/floor_nor_gl-jpg.webp",
+      "encoding": "WebP90",
+      "bytes": 746902,
+      "sha256": "1f18903483d7e8cebed41b879c5c3780a2f140a2f457e6afffbd7addae8232a3",
+      "psnr": 39.57059137039894
+    },
+    "cotton_jersey_diff_2k.png": {
+      "width": 2048,
+      "height": 2050,
+      "colorSpace": "srgb",
+      "sourceRawFile": "cotton_jersey_diff_2k-png.png",
+      "sourceSha256": "56318041eea71a67fc45900885006c7f60555343d1786959e149f1bee6ec0ef3",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/cotton_jersey_diff_2k-png.webp",
+      "encoding": "WebP90",
+      "bytes": 1230280,
+      "sha256": "34f223f8f39b4eca635afbab53991ce1326aad6fa481f8dd25ac11e9be251792",
+      "psnr": 39.312406684532945
+    },
+    "cotton_jersey_nor_gl_2k.png": {
+      "width": 2048,
+      "height": 2050,
+      "colorSpace": "linear",
+      "sourceRawFile": "cotton_jersey_nor_gl_2k-png.png",
+      "sourceSha256": "fea9a168b27ce3532b02c327ad7b61efa35a1e0f6abbd8c5ab7734ef3c24f053",
+      "roles": [
+        "normalMap"
+      ],
+      "file": "textures/cotton_jersey_nor_gl_2k-png.ktx2",
+      "encoding": "UASTC-RDO2",
+      "bytes": 3875510,
+      "sha256": "6eb362969c527642ca31278bf4cb2ff1627587d1d16579f9f85599dc1e2f9658"
+    },
+    "cotton_jersey_rough_2k.png": {
+      "width": 2048,
+      "height": 2050,
+      "colorSpace": "linear",
+      "sourceRawFile": "cotton_jersey_rough_2k-png.png",
+      "sourceSha256": "cdb70e71b0b0eab3792d98a862cf38ae5f5ac272bc102ceab0c29fd877195b91",
+      "roles": [
+        "roughnessMap"
+      ],
+      "file": "textures/cotton_jersey_rough_2k-png.ktx2",
+      "encoding": "ETC1S220",
+      "bytes": 759493,
+      "sha256": "004f8bd41206990018a456a64c73959c6a18fa7ecffa233b2a958c3dead35699"
+    },
+    "0e0ab4dc5d12bdac": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "0e0ab4dc5d12bdac.png",
+      "sourceSha256": "bac6dbf0b80e234f0ecb4302bd23b161500a6afef85e2ae4a20be349c4c2fd0b",
+      "roles": [
+        "emissiveMap",
+        "map"
+      ],
+      "file": "textures/0e0ab4dc5d12bdac.webp",
+      "encoding": "WebP-lossless",
+      "bytes": 316,
+      "sha256": "ed91a42b652a935941b32b7061c59c672eaa26ecc5d213355dfaedfcf5406088",
+      "psnr": 138.13080360867912
+    },
+    "panel_mdf_basecolor": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "panel_mdf_basecolor.jpg",
+      "sourceSha256": "410e3648d8609fe1883b3502d3a8207354441f03c95955f1e2112d55f868c154",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/panel_mdf_basecolor-q85.webp",
+      "encoding": "WebP85",
+      "bytes": 651472,
+      "sha256": "9d82d8f9618decaf897beadb44470aa86045d873b597a57fba03fe2033885a63",
+      "psnr": 38.30489148478828
+    },
+    "Image_0.002": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "srgb",
+      "sourceRawFile": "Image_0-002.jpg",
+      "sourceSha256": "73ca5552e0040de03a5e129ddb8ab0e80eede6517dfb75c8a97e45ab7b89a4f0",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/Image_0-002-q85.webp",
+      "encoding": "WebP85",
+      "bytes": 889814,
+      "sha256": "2b422009aa371946b051d9d5c57c17233cfd1ca249413cb0bf612b01daf0e471",
+      "psnr": 42.774573108401164
+    },
+    "Image_1.001": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_1-001.png",
+      "sourceSha256": "e595db4c8ded8e60d20eadde9fdf64e124af6f3a5bb2a1063452d75d2f3514ca",
+      "roles": [
+        "metalnessMap",
+        "roughnessMap"
+      ],
+      "file": "textures/Image_1-001.webp",
+      "encoding": "WebP90",
+      "bytes": 1609012,
+      "sha256": "ab598296b5b32f61998783de0690de038992c02505c93497703dca6c007ea9f9",
+      "psnr": 35.78160581078697
+    },
+    "Image_2.001": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_2-001.png",
+      "sourceSha256": "445d410b7ff4dc60da65be50244d3a906bce5c73a893ca196f186acad7746c9d",
+      "roles": [
+        "clearcoatMap"
+      ],
+      "sourceImage": "Image_1.001",
+      "decodeRGB": [
+        "1-g",
+        1,
+        1
+      ],
+      "materialUsage": {
+        "clearcoatMap": {
+          "channel": "g",
+          "invert": true
+        }
+      },
+      "encoding": "alias"
+    },
+    "Image_3": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_3.png",
+      "sourceSha256": "3d6bc5dcfddbddf65047f2c5400239e19d4645137aa314c14afd2bf783893c5a",
+      "roles": [
+        "clearcoatRoughnessMap"
+      ],
+      "sourceImage": "Image_1.001",
+      "decodeRGB": [
+        1,
+        "b",
+        1
+      ],
+      "materialUsage": {
+        "clearcoatRoughnessMap": {
+          "channel": "b"
+        }
+      },
+      "encoding": "alias"
+    },
+    "Image_4": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_4.png",
+      "sourceSha256": "ce91e0d57e445692e934f5059b6c6e653bf92a4c4c0b1bd6fc3a0108b6fa6394",
+      "roles": [
+        "clearcoatNormalMap"
+      ],
+      "file": "textures/Image_4.webp",
+      "encoding": "WebP90",
+      "bytes": 465192,
+      "sha256": "ee76a428d8ed5b7177fd223c692b49bf7cb082e7ef07dbee0a0e0496b930dfa6",
+      "psnr": 47.068518998037334
+    },
+    "5242ab000388c3bf": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "5242ab000388c3bf.png",
+      "sourceSha256": "e38f35f4812bad752fb3f74bbf0cc5653acd0828b0cf1532cbdd95175de48785",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/5242ab000388c3bf.webp",
+      "encoding": "WebP-lossless",
+      "bytes": 316,
+      "sha256": "498e8899a673952737871e60497d602cca08d68ccee58b710db3311d6fce6748",
+      "psnr": 138.13080360867912
+    },
+    "ab82ace016f9eda1": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "ab82ace016f9eda1.png",
+      "sourceSha256": "72b6509b07aca0263c89121829f7221a4e03499e315c820c5d928362e2a399a0",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/ab82ace016f9eda1.webp",
+      "encoding": "WebP-lossless",
+      "bytes": 316,
+      "sha256": "c065e52bdf6c48e6f71f182c9d1f00b8c38285ffe3b34d8c5d804de1d2208e74",
+      "psnr": 138.13080360867912
+    },
+    "b10f14d55bf446f6": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "b10f14d55bf446f6.png",
+      "sourceSha256": "02e884aeed1c07de09f18da17182db508272690a92380d6ded1f07f1a8d72527",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/b10f14d55bf446f6.webp",
+      "encoding": "WebP-lossless",
+      "bytes": 316,
+      "sha256": "a2f697b4659c473391df2f46f121362d387f2c4345a7f289db03979a38a194a2",
+      "psnr": 138.13080360867912
+    },
+    "panel_felt_charcoal_basecolor": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "panel_felt_charcoal_basecolor.jpg",
+      "sourceSha256": "6a3b4819f62c1f7222eeaa64ecf005ebbe7f14e299116d467134548fff722b6e",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/panel_felt_charcoal_basecolor-q85.webp",
+      "encoding": "WebP85",
+      "bytes": 882252,
+      "sha256": "ecfe0fed528c7e063821ca31746a24463bb7b55cdfda2659c84634989827e836",
+      "psnr": 38.72128436779689
+    },
+    "9542e61d396d6ace": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "9542e61d396d6ace.png",
+      "sourceSha256": "1bffd9f267e876371b4b0de3cd80fc14f4849c85927590d520a5e77ed05a93c8",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/9542e61d396d6ace.webp",
+      "encoding": "WebP-lossless",
+      "bytes": 316,
+      "sha256": "25dfdfb526bc0f80f4e3797ebb7b743631dce2f55430ea1b4fb448db4525cfdd",
+      "psnr": 138.13080360867912
+    },
+    "football_diff": {
+      "width": 1024,
+      "height": 1024,
+      "colorSpace": "srgb",
+      "sourceRawFile": "football_diff.jpg",
+      "sourceSha256": "b014796d1be23ac40f11f23082fef1dbe0ba6b66e618709d992df6eb86f4a2a4",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/football_diff.webp",
+      "encoding": "WebP90",
+      "bytes": 253972,
+      "sha256": "ccec9d97c2500ad216bcdc7c202cad3ce810a47809b16538bca083a93246cbc0",
+      "psnr": 40.334457231081295
+    },
+    "football_rough": {
+      "width": 1024,
+      "height": 1024,
+      "colorSpace": "linear",
+      "sourceRawFile": "football_rough.jpg",
+      "sourceSha256": "615de9ec1b97329e1b7ef792c234a230610f6f30afd90c9250febb98a1f87a1c",
+      "roles": [
+        "metalnessMap",
+        "roughnessMap"
+      ],
+      "file": "textures/football_rough.webp",
+      "encoding": "WebP90",
+      "bytes": 319690,
+      "sha256": "b8fca3d1f574d535d8be76fad7836580faf457220545201121f695ad82039036",
+      "psnr": 36.755221898298714
+    },
+    "football_nor_gl": {
+      "width": 1024,
+      "height": 1024,
+      "colorSpace": "linear",
+      "sourceRawFile": "football_nor_gl.jpg",
+      "sourceSha256": "313d8d24127865d066825eb94d391d4431136c9c068c0f0dc959bcccb925661f",
+      "roles": [
+        "normalMap"
+      ],
+      "file": "textures/football_nor_gl.webp",
+      "encoding": "WebP90",
+      "bytes": 307772,
+      "sha256": "e9fb279943cc2aa5fc7a7bcc9390616b6c53548b41cbe7dede5001765e98b054",
+      "psnr": 35.58437674901192
+    },
+    "Image_0.001": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "srgb",
+      "sourceRawFile": "Image_0-001.jpg",
+      "sourceSha256": "388139a92941a4021260a63d582e9ea5f521805757b3aa2a9e8a4b477f08dcab",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/Image_0-001-q85.webp",
+      "encoding": "WebP85",
+      "bytes": 793964,
+      "sha256": "cf0d92b048769abe563b8ff87e25c9aa330fbd6950db376e2b814954ea3ec5c3",
+      "psnr": 41.271225874152854
+    },
+    "Image_1": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_1.png",
+      "sourceSha256": "95e6c7048345297fab2351fd439c49792e56f562dfd879265e00de91a9a3b03f",
+      "roles": [
+        "metalnessMap",
+        "roughnessMap"
+      ],
+      "file": "textures/Image_1.webp",
+      "encoding": "WebP90",
+      "bytes": 890020,
+      "sha256": "6da2d966e344b0f5e5d1625144dc187c936951f8903c82b504c9593eb5e5d22d",
+      "psnr": 37.86919892681776
+    },
+    "Image_2": {
+      "width": 4096,
+      "height": 4096,
+      "colorSpace": "linear",
+      "sourceRawFile": "Image_2.png",
+      "sourceSha256": "b16622bf66fafb98e3c623b16be35dd13d7a2dd248c39966456c60af82c22a58",
+      "roles": [
+        "normalMap"
+      ],
+      "file": "textures/Image_2.webp",
+      "encoding": "WebP90",
+      "bytes": 362678,
+      "sha256": "06f0a7c84db80f47f8fef589dd2cd82675d4e4334b8d3033c1b46e1b13ae7d41",
+      "psnr": 39.5000001997411
+    },
+    "panel_walnut_basecolor": {
+      "width": 2048,
+      "height": 2048,
+      "colorSpace": "srgb",
+      "sourceRawFile": "panel_walnut_basecolor.jpg",
+      "sourceSha256": "41cb88283248f85a16bdd803b75a445040a2d148fda44c3869938197ee63de3f",
+      "roles": [
+        "map"
+      ],
+      "file": "textures/panel_walnut_basecolor.webp",
+      "encoding": "WebP90",
+      "bytes": 353738,
+      "sha256": "2ebbbf663f9e75f445204da1286fb105ff03d4cef337c08e4bbcb6aec71f40e4",
+      "psnr": 43.29893845563405
+    }
+  },
+  "totalBytes": 14832253,
+  "logicalImageCount": 24,
+  "physicalImageCount": 22,
+  "qualityPolicy": "cotton normal UASTC RDO2; cotton rough ETC1S220; secondary albedos WebP85; walnut cotton diffuse WebP90; other maps WebP90; five constants lossless originals",
+  "aliases": {
+    "verifiedPixelExact": true,
+    "Image_2.001": {
+      "sourceImage": "Image_1.001",
+      "decodeRGB": [
+        "1-g",
+        1,
+        1
+      ],
+      "materialUsage": {
+        "clearcoatMap": {
+          "channel": "g",
+          "invert": true
+        }
+      }
+    },
+    "Image_3": {
+      "sourceImage": "Image_1.001",
+      "decodeRGB": [
+        1,
+        "b",
+        1
+      ],
+      "materialUsage": {
+        "clearcoatRoughnessMap": {
+          "channel": "b"
+        }
+      }
+    }
+  }
+}
