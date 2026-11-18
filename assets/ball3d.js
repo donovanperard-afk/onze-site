@@ -53,6 +53,7 @@ function boot() {
     live = false;
     canvas.remove();
     delete document.documentElement.dataset.ball3d;
+    document.documentElement.dataset.ball3dState = 'fallback';
     window.__ball3d = false;
     dispatchEvent(new Event('ball3dready')); // app repaints the sprite
   }
@@ -105,12 +106,15 @@ function boot() {
     stage.insertBefore(canvas, document.querySelector('.ground-shadow'));
     size();
     addEventListener('resize', () => { size(); request(); }, { passive: true });
-    // first real frame is drawn (textures uploaded) while the canvas is still invisible
+    // loading: compile shaders for the real scene before the first final frame (canvas stays invisible)
+    if (renderer.compileAsync) await renderer.compileAsync(scene, camera);
+    // let the page publish the current scroll pose first, so the first visible frame is the final one
+    dispatchEvent(new Event('ball3dready'));
     draw();
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
     draw();
     live = true;
-    // atomic swap: canvas on, sprite off in the same task
+    // atomic swap: canvas on, sprite stays hidden until this point
     canvas.style.opacity = '1';
     window.__ball3d = true;
     document.documentElement.dataset.ball3d = '1';

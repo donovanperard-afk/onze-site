@@ -1,0 +1,57 @@
+.vst{position:fixed;inset:0;background:#05060C;color:var(--paper);overflow:hidden}
+.vst-stage{position:absolute;inset:0;touch-action:pan-y;user-select:none;-webkit-user-select:none;background:#05060C }
+.vst-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 400ms cubic-bezier(.23,1,.32,1)}
+.vst.is-ready .vst-stage canvas{opacity:1}
+.vst.is-dragging .vst-stage{cursor:grabbing}
+.vst-status{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);margin:0;padding:10px 16px;background:rgba(5,6,12,.78);font-size:14px;max-width:calc(100% - 48px);text-align:center}
+.vst-status:empty,.vst-status[hidden]{display:none}
+.vst:not(.is-static) .vst-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);padding:0}
+.vst-top{position:absolute;left:var(--gut);top:104px;display:flex;flex-direction:column;gap:6px;pointer-events:none;z-index:2}
+.vst-top a{pointer-events:auto;color:var(--paper);min-height:44px;display:inline-flex;align-items:center;font-size:14px;text-decoration:none;opacity:.86}
+.vst-top h1{margin:0;font-size:clamp(28px,4vw,52px);line-height:1;letter-spacing:-.02em;text-shadow:0 2px 24px rgba(5,6,12,.7)}
+.vst-hint{margin:0;font-size:13px;opacity:.7;transition:opacity 240ms ease}
+.vst.is-focus .vst-hint,.vst.is-focus .vst-top h1{opacity:0}
+.vst-picker{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);display:flex;gap:8px;padding:6px;background:rgba(5,6,12,.62);border:1px solid rgba(244,245,242,.22);z-index:3}
+.vst-dot{min-width:44px;min-height:44px;border:1px solid rgba(244,245,242,.36);background:transparent;color:var(--paper);font:inherit;font-size:15px;cursor:pointer;transition:background-color 160ms ease,transform 160ms cubic-bezier(.23,1,.32,1)}
+.vst-dot:active{transform:scale(.97)}
+.vst-dot[aria-pressed=true]{background:var(--paper);color:#05060C}
+.vst-dot:focus-visible,.vst-size:focus-visible,.vst-close:focus-visible,.vst-link:focus-visible,.vst-top a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.vst-card{position:absolute;right:var(--gut);top:50%;width:min(360px,calc(100% - 2*var(--gut)));padding:28px;background:rgba(5,6,12,.86);border:1px solid rgba(244,245,242,.24);z-index:4;opacity:0;visibility:hidden;transform:translate(14px,-50%);transition:opacity 220ms cubic-bezier(.23,1,.32,1),transform 260ms cubic-bezier(.23,1,.32,1),visibility 0s 260ms}
+.vst.is-focus .vst-card{opacity:1;visibility:visible;transform:translate(0,-50%);transition-delay:120ms,120ms,0s}
+.vst-tag{padding-right:44px;pointer-events:none;margin:0 0 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.vst-name{margin:0 0 6px;font-size:26px;line-height:1.1;letter-spacing:-.01em}
+.vst-sub{margin:0 0 18px;opacity:.74;font-size:14px}
+.vst-price{margin:0 0 18px;font-size:20px}
+.vst-sizes-title{margin:0 0 8px;font-size:14px}
+.vst-sizes{display:flex;gap:8px;margin:0 0 22px}
+.vst-size{min-width:48px;min-height:48px;border:1px solid rgba(244,245,242,.4);background:transparent;color:var(--paper);font:inherit;cursor:pointer;transition:background-color 160ms ease,color 160ms ease}
+.vst-size:active{transform:scale(.97)}
+.vst-size[aria-pressed=true]{background:var(--paper);color:#05060C;border-color:var(--paper)}
+.vst-link{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:var(--paper);color:#05060C;text-decoration:none;font-weight:600}
+.vst-close{z-index:2;position:absolute;right:8px;top:8px;width:44px;height:44px;border:0;background:transparent;color:var(--paper);font-size:26px;cursor:pointer}
+@media (max-width:768px){
+.vst-top{top:96px}
+.vst-card{top:auto;right:12px;left:12px;bottom:84px;width:auto;padding:18px;transform:translateY(16px)}
+.vst.is-focus .vst-card{transform:none}
+.vst-name{font-size:22px}.vst-sub{margin-bottom:8px}.vst-price{margin-bottom:10px;font-size:18px}.vst-sizes{margin-bottom:14px}
+.vst-picker{bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){.vst-card,.vst-stage canvas{transition:none}}
+.vst-overview{position:absolute;right:var(--gut);bottom:24px;min-height:44px;padding:0 16px;border:1px solid rgba(244,245,242,.36);background:rgba(5,6,12,.62);color:var(--paper);font:inherit;font-size:14px;cursor:pointer;z-index:3;opacity:0;visibility:hidden;transition:opacity 200ms cubic-bezier(.23,1,.32,1),visibility 0s 200ms}
+.vst.is-rail:not(.is-focus) .vst-overview{opacity:1;visibility:visible;transition-delay:0s}
+.vst-overview:active{transform:scale(.97)}.vst-overview:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.vst-fallback{display:none}
+.vst.is-static .vst-fallback{display:inline-flex;position:absolute;left:50%;top:calc(46% + 44px);transform:translateX(-50%);min-height:48px;align-items:center;padding:0 20px;background:var(--paper);color:#05060C;text-decoration:none;font-weight:600;z-index:5}
+.vst.is-static .vst-status{bottom:auto;top:38%;width:max-content;height:auto;clip:auto;overflow:visible;padding:12px 18px}
+@media (max-width:768px){.vst-tag,.vst-sub{display:none}.vst-overview{bottom:84px;right:12px}.vst.is-focus .vst-overview{display:none}}
+
+/* loading overlay (loading plumbing only) */
+.vst-loader{position:absolute;inset:0;z-index:3;background:#05060C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity 300ms cubic-bezier(.23,1,.32,1)}
+.vst-loader[hidden]{display:none}
+.vst.is-ready .vst-loader{opacity:0;pointer-events:none}
+.vst-loader p{margin:0;font-size:15px;letter-spacing:.01em;color:var(--paper);font-variant-numeric:tabular-nums}
+.vst-loader-line{display:block;width:min(240px,60vw);height:1px;background:rgba(255,255,255,.18);overflow:hidden}
+.vst-loader-line i{display:block;height:100%;background:var(--paper);transform-origin:0 50%;transform:scaleX(0)}
+.vst-stage canvas{transition:none}
+.vst-loader.is-prep .vst-loader-line i{animation:ldind 1.2s cubic-bezier(.23,1,.32,1) infinite;transform:scaleX(.3)}@keyframes ldind{from{transform:translateX(-100%) scaleX(.3)}to{transform:translateX(330%) scaleX(.3)}}@media(prefers-reduced-motion:reduce){.vst-loader.is-prep .vst-loader-line i{animation:none;transform:scaleX(1)}}
+.vst-loader-scope{font-size:12px;letter-spacing:.04em;color:var(--paper);opacity:.6;margin-top:-8px}

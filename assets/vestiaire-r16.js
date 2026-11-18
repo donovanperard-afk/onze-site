@@ -29,7 +29,7 @@ if (!root.classList.contains('is-static')) init().catch(e => { console.error(e);
 
 const MOBILE = innerWidth <= 768;
 function texLoad(url, o) {
-  if (MOBILE && !/\/r16\/mobile\//.test(url)) url = url.replace('/r16/', '/r16/mobile/');
+  if (MOBILE && !/\/r16\/mobile\//.test(url)) url = url.replace('/onze-site/r16/', '/onze-site/r16/mobile/');
   return new THREE.TextureLoader().loadAsync(url).then(t => {
     t.colorSpace = o && o.linear ? THREE.NoColorSpace : THREE.SRGBColorSpace; t.flipY = false;
     t.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); if (o && o.channel) t.channel = o.channel; if (o && o.repeat) t.wrapS = t.wrapT = THREE.RepeatWrapping;

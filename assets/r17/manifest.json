@@ -9341,9 +9341,9 @@
     "compression": "Full source dimensions; adaptive texture encodings, scene-linear SQRT fixed-range lightmaps, originals immutable."
   },
   "sourceHashes": {
-    "/home/kit/work/vestiaire/bake-ready-lighting-v2/vestiaire-lighting-v2.blend": "d88da7943a44498847f7ee5d0eaef8301387fabf7204897797045948d30274e2",
-    "/home/kit/work/vestiaire/bake-ready-lighting-v2/atlas-manifest.json": "16be8e8e5b04207c7b7d8ccbab37d430dec8901ac0fb768a536c7cc56c63f2a3",
-    "/home/kit/work/vestiaire/r14/tee-placement-v3.blend": "2c767d1f99f8058ed206477559981bb6d7d989e21b8ee2b76208d3fc0698a444"
+    "/onze-site/home/kit/work/vestiaire/bake-ready-lighting-v2/vestiaire-lighting-v2.blend": "d88da7943a44498847f7ee5d0eaef8301387fabf7204897797045948d30274e2",
+    "/onze-site/home/kit/work/vestiaire/bake-ready-lighting-v2/atlas-manifest.json": "16be8e8e5b04207c7b7d8ccbab37d430dec8901ac0fb768a536c7cc56c63f2a3",
+    "/onze-site/home/kit/work/vestiaire/r14/tee-placement-v3.blend": "2c767d1f99f8058ed206477559981bb6d7d989e21b8ee2b76208d3fc0698a444"
   },
   "compressionAudit": "../r17c/encodingmanifest.json"
 }
