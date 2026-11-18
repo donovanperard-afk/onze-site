@@ -4,6 +4,32 @@
   const navEl = document.querySelector('.nav');
   const navState = () => navEl && navEl.classList.toggle('is-scrolled', scrollY > 10);
   addEventListener('scroll', navState, {passive:true}); navState();
+  if (navEl) {
+    const hov = matchMedia('(hover:hover) and (pointer:fine)');
+    let lastY = scrollY, hover = false;
+    const setHidden = v => navEl.classList.toggle('nav-hidden', v);
+    const sync = () => {
+      const y = scrollY, dy = y - lastY; lastY = y;
+      if (y < 10 || navEl.matches(':focus-within') || (hov.matches && hover)) return setHidden(false);
+      if (hov.matches) { if (dy > 0) setHidden(true); return; }
+      if (dy < -2) setHidden(false); else if (dy > 2) setHidden(true);
+    };
+    addEventListener('scroll', sync, {passive:true});
+    navEl.addEventListener('mouseenter', () => { hover = true; setHidden(false); });
+    navEl.addEventListener('mouseleave', () => { hover = false; if (scrollY >= 10 && !navEl.matches(':focus-within')) setHidden(true); });
+    addEventListener('mousemove', e => { if (hov.matches && e.clientY < 80 && scrollY >= 10) { hover = true; setHidden(false); } else if (hov.matches && e.clientY >= 100 && hover && !navEl.matches(':hover')) { hover = false; if (scrollY >= 10 && !navEl.matches(':focus-within')) setHidden(true); } }, {passive:true});
+    navEl.addEventListener('focusin', () => setHidden(false));
+  }
+  document.querySelectorAll('.peek-btn').forEach(btn => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const set = open => {
+      btn.setAttribute('aria-expanded', String(open));
+      if (open) { panel.hidden = false; panel.classList.remove('is-open'); void panel.offsetWidth; panel.classList.add('is-open'); }
+      else { panel.hidden = true; panel.classList.remove('is-open'); }
+    };
+    btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+    btn.closest('.peek').addEventListener('keydown', e => { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); } });
+  });
   const dialog = document.querySelector('.contact-dialog');
   document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
   dialog?.querySelector('[data-close]').addEventListener('click', () => dialog.close());
@@ -29,24 +55,31 @@
   const scrollLabel = document.querySelector('.scroll-label');
   const progressLine = document.querySelector('.scroll-line i');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  let width = 0, height = 0, ratio = 1, offsetX = 0, offsetY = 0, distance = 1;
+  let pre = 0, width = 0, height = 0, ratio = 1, offsetX = 0, offsetY = 0, distance = 1;
   let queued = false;
   const clamp = value => Math.min(1, Math.max(0, value));
   const mix = (a, b, t) => a + (b - a) * t;
   function measure() {
     width = stage.clientWidth;
     height = stage.clientHeight;
-    ratio = Math.max(width / 3072, height / 2048);
-    offsetX = (width - 3072 * ratio) * (width <= 640 ? .77 : .5);
-    offsetY = (height - 2048 * ratio) * .5 + (width <= 640 ? 150 : 140);
-    distance = Math.max(1, track.offsetHeight - height);
+    if (width <= 640) {
+      ratio = Math.max(width / 3072, height / 2048);
+      offsetX = (width - 3072 * ratio) * .77;
+      offsetY = (height - 2048 * ratio) * .5 + 150;
+      distance = Math.max(1, track.offsetHeight - height);
+      pre = 0;
+    } else { // full image, 3:2, no crop
+      ratio = width / 3072; offsetX = 0; offsetY = 0;
+      pre = Math.max(0, height - innerHeight);
+      distance = Math.max(1, track.offsetHeight - height);
+    }
     paint();
   }
   let cur = null, last = 0;
   const K = -Math.log(.925) * 60; // equals .075 per frame at 60fps, frame-rate independent
   function paint(now) {
     queued = false;
-    const target = reduce.matches ? 0 : clamp(-track.getBoundingClientRect().top / distance);
+    const target = reduce.matches ? 0 : clamp((-track.getBoundingClientRect().top - pre) / distance);
     const dt = Math.min(.1, Math.max(0, ((now || performance.now()) - last) / 1000));
     last = now || performance.now();
     if (cur === null || reduce.matches) cur = target;
@@ -59,8 +92,8 @@
     const initial = mobile ? width * .7 : height * .4;
     const startX = mobile ? width * .4 : initial * .2;
     const startY = mobile ? height - initial * .4 : height - initial * .25;
-    const targetX = offsetX + 2262 * ratio;
-    const targetY = offsetY + 768 * ratio;
+    const targetX = offsetX + (mobile ? 2262 : 2220) * ratio;
+    const targetY = offsetY + (mobile ? 768 : 770) * ratio;
     const final = ((1030 - 706) * .22) * ratio;
     // low sweep along the grass, then a gentle curve up into the front-right goal (cubic bezier)
     const dx = targetX - startX, dy = startY - targetY;
