@@ -46791,7 +46791,7 @@ class LoaderUtils {
 
 	static extractUrlBase( url ) {
 
-		const index = url.lastIndexOf( '/onze-site/' );
+		const index = url.lastIndexOf( '/' );
 
 		if ( index === - 1 ) return './';
 
@@ -49587,7 +49587,7 @@ const _reservedRe = new RegExp( '[' + _RESERVED_CHARS_RE + ']', 'g' );
 const _wordChar = '[^' + _RESERVED_CHARS_RE + ']';
 const _wordCharOrDot = '[^' + _RESERVED_CHARS_RE.replace( '\\.', '' ) + ']';
 
-// Parent directories, delimited by '/onze-site/' or ':'. Currently unused, but must
+// Parent directories, delimited by '/' or ':'. Currently unused, but must
 // be matched to parse the rest of the track name.
 const _directoryRe = /*@__PURE__*/ /((?:WC+[\/:])*)/.source.replace( 'WC', _wordChar );
 

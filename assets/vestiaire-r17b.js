@@ -126,7 +126,7 @@ async function buildMaterial(id, def, o) {
     if (static_) {
       let ch = THREE.ShaderChunk.lights_fragment_maps; const tgt = 'vec3 lightMapIrradiance = lightMapTexel.rgb * lightMapIntensity;', ibl = 'iblIrradiance += getIBLIrradiance( geometryNormal );';
       if (!ch.includes(ibl)) throw new Error('r17: three env diffuse chunk changed');
-      ch = ch.replace(ibl, '/onze-site/* static env diffuse removed: GI is baked */');
+      ch = ch.replace(ibl, '/* static env diffuse removed: GI is baked */');
       if (rgbm) { if (!ch.includes(tgt)) throw new Error('r17: three lightmap chunk changed, RGBM patch cannot apply'); ch = ch.replace(tgt, 'vec3 lightMapIrradiance = lightMapTexel.rgb * lightMapTexel.a * ' + range.toFixed(4) + ' * lightMapIntensity;'); }
       if (sqrt) { if (!ch.includes(tgt)) throw new Error('r17: three lightmap chunk changed, RGBM-SQRT patch cannot apply'); ch = ch.replace(tgt, 'vec3 lightMapIrradiance = lightMapTexel.rgb * lightMapTexel.rgb * ' + range.toFixed(4) + ' * lightMapIntensity;'); }
       f = f.replace('#include <lights_fragment_maps>', ch);
